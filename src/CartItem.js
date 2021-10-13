@@ -11,32 +11,32 @@ class CartItem extends React.Component{
     //     }
     //     // this.increaseQuantity = this.increaseQuantity.bind(this);
     // }
-    increaseQuantity=()=>{
-        //console.log('this.state', this.state);
-        //setState form 1
-        // this.setState({
-        //     qty:this.state.qty+1
-        // });
+    // increaseQuantity=()=>{
+    //     //console.log('this.state', this.state);
+    //     //setState form 1
+    //     // this.setState({
+    //     //     qty:this.state.qty+1
+    //     // });
 
-        // setState Form 2 - if previous state required
-        this.setState((prevState)=>{
-            return {
-                qty: prevState.qty+1
-            }
-        });
-    }
-    decreaseQuantity=()=>{
-        const {qty}= this.state;
+    //     // setState Form 2 - if previous state required
+    //     this.setState((prevState)=>{
+    //         return {
+    //             qty: prevState.qty+1
+    //         }
+    //     });
+    // }
+    // decreaseQuantity=()=>{
+    //     const {qty}= this.state;
 
-        if(qty==0){
-            return;
-        }
-        this.setState((prevState)=>{
-            return {
-                qty:prevState.qty-1
-            }
-        });
-    }
+    //     if(qty==0){
+    //         return;
+    //     }
+    //     this.setState((prevState)=>{
+    //         return {
+    //             qty:prevState.qty-1
+    //         }
+    //     });
+    // }
     render(){
         // const {price, title, qty } = this.state;
         const {price, title, qty } = this.props.product;
@@ -55,7 +55,7 @@ class CartItem extends React.Component{
                             alt ="increase" 
                             className="action-icons" 
                             src="https://cdn-icons-png.flaticon.com/512/992/992651.png" 
-                            onClick={this.increaseQuantity}
+                            onClick={()=> this.props.onIncreaseQuantity(this.props.product)}
                         />
                         <img 
                             alt ="decrease" 
