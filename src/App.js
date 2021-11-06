@@ -92,11 +92,23 @@ class App extends React.Component {
       const {products} = this.state;
 
       // return items having id not eqal to deleted id
-      const items = products.filter((item)=>item.id !== id);
+      // const items = products.filter((item)=>item.id !== id);
 
-      this.setState({
-          products: items
+      // this.setState({
+      //     products: items
+      // })
+
+      const docRef = this.db.collection('products').doc(id);
+      
+      docRef
+      .delete()
+      .then(()=>{
+        console.log('Deleted Successfully')
       })
+      .catch((error)=>{
+        console.log("Error: ", error)
+      })
+
   }
 
   getCartCount= ()=>{
